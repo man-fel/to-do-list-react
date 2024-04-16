@@ -9,10 +9,10 @@ function App() {
         setinputValue(event.target.value)
     }
     function handleItem(){
-        if(inputValue !== ""){
-            setItem([...items, inputValue]);
-            setinputValue("");
-        }
+        setItem((prevItems)=>{
+          return [...prevItems, inputValue]
+        })
+    setinputValue("");
     }
   return (
     <div className="container">
@@ -27,9 +27,7 @@ function App() {
       </div>
       <div>
         <ul>
-            {items.map((item, index)=>(
-             <li key={index}>{item}</li>
-            ))}
+            {items.map(todoItem => <li>{todoItem}</li>)}
         </ul>
       </div>
     </div>
